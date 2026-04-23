@@ -1,0 +1,153 @@
+# Activity Food Agent Configuration
+
+# Applications indicating intense work
+work_applications:
+  - 'code'           # VS Code
+  - 'devenv'         # Visual Studio
+  - 'terminal'       # Windows Terminal / PowerShell
+  - 'excel'          # Microsoft Excel
+  - 'figma'          # Figma
+  - 'pycharm'        # PyCharm
+  - 'cursor'         # Cursor Editor
+
+# Applications indicating fun/relax
+fun_applications:
+  - 'spotify'
+  - 'netflix'
+  - 'steam'
+  - 'chrome'         # Note: Title filtering logic can be added in code
+  - 'vlc'
+  - 'discord'
+
+# Agent behavior settings
+intensity_threshold: 0.6       # Proportion of time in work apps to be 'INTENSE'
+sampling_window_minutes: 10    # Lookback window for state calculation
+check_interval_seconds: 60     # Tick rate for activity sensing
+auto_order: false              # If true, skips terminal prompt
+budget_limit: 1500             # Max order value in INR
+preferred_restaurants: []      # Optional list of restaurant names to prioritize
+
+# State-specific preferences
+preferences:
+  intense_work:
+    search_keywords: ['high protein', 'salad', 'bowl', 'smoothie']
+    max_delivery_time_minutes: 30
+    min_rating: 4.0
+    convenience_keywords: ['one-handed', 'wrap', 'sandwich']
+    weights:
+      nutrition: 0.4
+      convenience: 0.3
+      speed: 0.2
+      rating: 0.1
+  fun:
+    search_keywords: ['biryani', 'pizza', 'burger', 'chinese', 'momos']
+    max_delivery_time_minutes: 45
+    min_rating: 3.8
+    indulgence_score_boost: true
+    weights:
+      indulgence: 0.5
+      rating: 0.3
+      value_for_money: 0.2
+
+# Local meals database for testing/fallback
+meals_database:
+  - id: 1
+    name: "Grilled Chicken Caesar Salad"
+    protein_g: 35
+    calories: 450
+    convenience_score: 0.9
+    indulgence_score: 0.2
+    typical_price: 350
+    delivery_time_estimate: 25
+    rating: 4.5
+    keywords: ['bowl', 'high protein', 'salad']
+  - id: 2
+    name: "Double Cheese Margherita Pizza"
+    protein_g: 15
+    calories: 800
+    convenience_score: 0.8
+    indulgence_score: 0.9
+    typical_price: 450
+    delivery_time_estimate: 40
+    rating: 4.2
+    keywords: ['pizza', 'cheese']
+  - id: 3
+    name: "Hyderabadi Chicken Biryani"
+    protein_g: 25
+    calories: 700
+    convenience_score: 0.4
+    indulgence_score: 0.9
+    typical_price: 380
+    delivery_time_estimate: 35
+    rating: 4.6
+    keywords: ['biryani', 'spicy']
+  - id: 4
+    name: "Avocado & Spinach Wrap"
+    protein_g: 12
+    calories: 320
+    convenience_score: 1.0
+    indulgence_score: 0.3
+    typical_price: 280
+    delivery_time_estimate: 20
+    rating: 4.1
+    keywords: ['wrap', 'one-handed', 'healthy']
+  - id: 5
+    name: "Classic Beef Burger"
+    protein_g: 22
+    calories: 650
+    convenience_score: 0.9
+    indulgence_score: 0.8
+    typical_price: 320
+    delivery_time_estimate: 30
+    rating: 4.0
+    keywords: ['burger', 'sandwich']
+  - id: 6
+    name: "Quinoa Protein Bowl"
+    protein_g: 28
+    calories: 500
+    convenience_score: 0.8
+    indulgence_score: 0.2
+    typical_price: 420
+    delivery_time_estimate: 25
+    rating: 4.4
+    keywords: ['bowl', 'high protein']
+  - id: 7
+    name: "Butter Chicken with Naan"
+    protein_g: 30
+    calories: 900
+    convenience_score: 0.3
+    indulgence_score: 0.95
+    typical_price: 480
+    delivery_time_estimate: 45
+    rating: 4.7
+    keywords: ['curry', 'indulgent']
+  - id: 8
+    name: "Steamed Chicken Momos"
+    protein_g: 18
+    calories: 350
+    convenience_score: 0.9
+    indulgence_score: 0.5
+    typical_price: 220
+    delivery_time_estimate: 20
+    rating: 4.3
+    keywords: ['momos', 'chinese']
+  - id: 9
+    name: "Paneer Tikka Roll"
+    protein_g: 15
+    calories: 450
+    convenience_score: 1.0
+    indulgence_score: 0.6
+    typical_price: 180
+    delivery_time_estimate: 15
+    rating: 4.2
+    keywords: ['wrap', 'one-handed', 'vegetarian']
+  - id: 10
+    name: "Berry Blast Smoothie"
+    protein_g: 10
+    calories: 250
+    convenience_score: 1.0
+    indulgence_score: 0.4
+    typical_price: 250
+    delivery_time_estimate: 15
+    rating: 4.5
+    keywords: ['smoothie', 'one-handed']
