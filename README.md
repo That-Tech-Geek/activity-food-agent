@@ -15,9 +15,13 @@ An AI agent that monitors computer activity and autonomously (or via confirmatio
    pip install food-ai
    ```
 2. Configure `config.yaml` with your preferred apps and meals.
-3. Run the agent:
+3. Run the agent (background):
    ```bash
    python activity_food_agent.py
+   ```
+4. Launch the Dashboard:
+   ```bash
+   streamlit run dashboard.py
    ```
 
 ## Development
