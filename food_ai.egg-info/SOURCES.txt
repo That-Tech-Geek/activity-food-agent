@@ -1,6 +1,7 @@
 README.md
 activity_food_agent.py
 dashboard.py
+food_ai_launcher.py
 pyproject.toml
 wizard_entry.py
 food_ai.egg-info/PKG-INFO

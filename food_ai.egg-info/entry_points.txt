@@ -1,3 +1,4 @@
 [console_scripts]
 food-agent = activity_food_agent:main
+food-ai-launch = food_ai_launcher:main
 food-wizard = wizard_entry:main

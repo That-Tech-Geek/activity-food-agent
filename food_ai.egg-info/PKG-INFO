@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: food-ai
-Version: 0.2.0
+Version: 0.2.1
 Summary: An AI agent that monitors computer activity and autonomously decides what food to order.
 Author-email: Sambit Mishra <sambit1912@gmail.com>
 Project-URL: Homepage, https://github.com/That-Tech-Geek/activity-food-agent

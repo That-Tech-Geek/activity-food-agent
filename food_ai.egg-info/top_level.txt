@@ -1,3 +1,4 @@
 activity_food_agent
 dashboard
+food_ai_launcher
 wizard_entry

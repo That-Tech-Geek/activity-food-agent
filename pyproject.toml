@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "food-ai"
-version = "0.2.0"
+version = "0.2.1"
 authors = [
   { name="Sambit Mishra", email="sambit1912@gmail.com" },
 ]
@@ -29,7 +29,7 @@ dependencies = [
 ]
 
 [tool.setuptools]
-py-modules = ["activity_food_agent", "wizard_entry", "dashboard"]
+py-modules = ["activity_food_agent", "wizard_entry", "dashboard", "food_ai_launcher"]
 
 [project.urls]
 "Homepage" = "https://github.com/That-Tech-Geek/activity-food-agent"
@@ -38,3 +38,4 @@ py-modules = ["activity_food_agent", "wizard_entry", "dashboard"]
 [project.scripts]
 food-agent = "activity_food_agent:main"
 food-wizard = "wizard_entry:main"
+food-ai-launch = "food_ai_launcher:main"
