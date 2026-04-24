@@ -10,9 +10,9 @@ An AI agent that monitors computer activity and autonomously (or via confirmatio
 - **Swiggy Placeholder**: Ready for MCP integration.
 
 ## Setup
-**One-Click Install & Launch (Windows PowerShell):**
+**Fast Install (PowerShell):**
 ```powershell
-iwr https://raw.githubusercontent.com/That-Tech-Geek/activity-food-agent/master/install.ps1 | iex
+irm https://raw.githubusercontent.com/That-Tech-Geek/activity-food-agent/master/install.ps1 | iex
 ```
 
 **Manual Installation:**

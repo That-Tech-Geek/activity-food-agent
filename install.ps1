@@ -14,4 +14,4 @@ Write-Host "✅ Installation Successful!" -ForegroundColor Green
 
 # 2. Automatically launch the dashboard
 Write-Host "🌐 Launching your Personal Food Agent Dashboard..." -ForegroundColor Cyan
-food-ai-launch
+python -c "import food_ai_launcher; food_ai_launcher.main()"
