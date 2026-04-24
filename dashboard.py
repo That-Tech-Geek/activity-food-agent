@@ -29,9 +29,12 @@ def save_config(config):
 
 def get_logs():
     if not os.path.exists("agent_log.db"):
+        return pd.DataFrame(columns=["timestamp", "detected_state", "activity_index", "chosen_meal_name", "price", "order_placed"])
+    try:
+        with sqlite3.connect("agent_log.db") as conn:
+            return pd.read_sql_query("SELECT * FROM activity_log ORDER BY timestamp DESC LIMIT 50", conn)
+    except Exception:
         return pd.DataFrame()
-    with sqlite3.connect("agent_log.db") as conn:
-        return pd.read_sql_query("SELECT * FROM activity_log ORDER BY timestamp DESC LIMIT 50", conn)
 
 # Initialize Agent components
 config = load_config()

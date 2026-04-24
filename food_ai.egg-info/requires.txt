@@ -1,0 +1,9 @@
+psutil
+pyyaml
+requests
+beautifulsoup4
+uiautomation
+pywin32
+streamlit
+pandas
+plotly

@@ -27,6 +27,18 @@ auto_order: false              # If true, skips terminal prompt
 budget_limit: 1500             # Max order value in INR
 preferred_restaurants: []      # Optional list of restaurant names to prioritize
 
+# Ollama / FunctionGemma Settings
+ollama:
+  host: "http://localhost:11434"
+  model: "functiongemma:latest"
+  activity_index_threshold: 70  # Activity Index >= 70 is INTENSE
+
+# Activity Sensing Parameters
+sensors:
+  cpu_interval: 2.0             # Seconds to measure CPU usage
+  max_windows_to_list: 15       # Max windows to send to LLM
+  crawl_timeout: 5.0            # Timeout for fetching webpage content
+
 # State-specific preferences
 preferences:
   intense_work:

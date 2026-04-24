@@ -1,0 +1,9 @@
+README.md
+activity_food_agent.py
+pyproject.toml
+food_ai.egg-info/PKG-INFO
+food_ai.egg-info/SOURCES.txt
+food_ai.egg-info/dependency_links.txt
+food_ai.egg-info/entry_points.txt
+food_ai.egg-info/requires.txt
+food_ai.egg-info/top_level.txt

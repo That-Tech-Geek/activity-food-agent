@@ -89,15 +89,14 @@ class ActivitySensors:
             window = auto.WindowControl(searchDepth=1, Name=win32gui.GetWindowText(hwnd))
             
             # Look for the address bar (EditControl or similar)
-            # For Chrome/Edge, it's often a control with Type 'EditControl' and specific Name
-            url = ""
-            if "chrome" in proc_name or "msedge" in proc_name:
-                address_control = window.EditControl(searchDepth=5, Name="Address and search bar")
-                if not address_control.Exists(0): # Try generic names
-                    address_control = window.EditControl(searchDepth=5)
-                
-                if address_control.Exists(0):
-                    url = address_control.GetValuePattern().Value
+            address_control = window.EditControl(searchDepth=5, Name="Address and search bar")
+            if not address_control.Exists(1): # Try generic names with 1s timeout
+                address_control = window.EditControl(searchDepth=5)
+            
+            if not address_control.Exists(1):
+                return {"status": "Could not find address bar", "process": proc_name}
+
+            url = address_control.GetValuePattern().Value
             
             if not url or not url.startswith("http"):
                 return {"status": "Could not extract URL", "process": proc_name}
@@ -202,10 +201,14 @@ JSON format:
             if response.status_code == 200:
                 result = response.json()
                 content = result.get('message', {}).get('content', '{}')
-                # Some models return JSON inside a markdown block
                 if "```json" in content:
                     content = content.split("```json")[1].split("```")[0].strip()
-                return json.loads(content)
+                try:
+                    return json.loads(content)
+                except json.JSONDecodeError:
+                    # Fallback for non-JSON responses
+                    logger.warning(f"LLM returned non-JSON: {content[:100]}")
+                    return {"activity_index": 50, "state": "FUN", "reasoning": "Failed to parse LLM JSON"}
             
             return {"activity_index": 50, "state": "FUN", "error": f"HTTP {response.status_code}"}
 

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "food-ai"
-version = "0.1.1"
+version = "0.1.2"
 authors = [
   { name="Sambit Mishra", email="sambit1912@gmail.com" },
 ]
@@ -23,6 +23,9 @@ dependencies = [
     "beautifulsoup4",
     "uiautomation",
     "pywin32",
+    "streamlit",
+    "pandas",
+    "plotly",
 ]
 
 [tool.setuptools]

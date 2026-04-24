@@ -33,5 +33,10 @@ def test_components():
     state = agent.classify_state()
     print(f"Classification test (1 work, 1 fun, threshold 0.6): {state}")
 
+    # Test 5: Budget Constraint
+    agent.config['budget_limit'] = 100
+    score_low_budget = agent.score_meal(meals[0], "INTENSE")
+    print(f"Low Budget Test (Meal 350, Budget 100): Score={score_low_budget} (Expected -100.0)")
+    
 if __name__ == "__main__":
     test_components()

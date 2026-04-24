@@ -1,0 +1,2 @@
+[console_scripts]
+food-agent = activity_food_agent:main
