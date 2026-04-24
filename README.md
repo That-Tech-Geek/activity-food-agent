@@ -10,9 +10,9 @@ An AI agent that monitors computer activity and autonomously (or via confirmatio
 - **Swiggy Placeholder**: Ready for MCP integration.
 
 ## Setup
-1. Install dependencies:
+1. Install the agent:
    ```bash
-   pip install psutil pyyaml
+   pip install food-ai
    ```
 2. Configure `config.yaml` with your preferred apps and meals.
 3. Run the agent:
