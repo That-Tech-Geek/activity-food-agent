@@ -1,6 +1,8 @@
 README.md
 activity_food_agent.py
+dashboard.py
 pyproject.toml
+wizard_entry.py
 food_ai.egg-info/PKG-INFO
 food_ai.egg-info/SOURCES.txt
 food_ai.egg-info/dependency_links.txt

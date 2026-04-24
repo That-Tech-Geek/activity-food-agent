@@ -1,1 +1,3 @@
 activity_food_agent
+dashboard
+wizard_entry

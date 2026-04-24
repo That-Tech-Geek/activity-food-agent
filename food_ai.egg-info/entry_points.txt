@@ -1,2 +1,3 @@
 [console_scripts]
 food-agent = activity_food_agent:main
+food-wizard = wizard_entry:main

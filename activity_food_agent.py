@@ -226,9 +226,28 @@ class ActivityFoodAgent:
         self.setup_db()
         
     def load_config(self) -> Dict:
+        """Loads configuration from YAML file or creates default."""
         if not os.path.exists(self.config_path):
-            logger.error(f"Config file {self.config_path} not found.")
-            sys.exit(1)
+            logger.warning(f"Config file {self.config_path} not found. Creating default.")
+            default_config = {
+                'work_applications': ['code', 'cursor', 'terminal'],
+                'fun_applications': ['spotify', 'chrome', 'netflix'],
+                'intensity_threshold': 0.6,
+                'sampling_window_minutes': 10,
+                'check_interval_seconds': 60,
+                'auto_order': False,
+                'budget_limit': 1500,
+                'ollama': {'host': 'http://localhost:11434', 'model': 'functiongemma:latest', 'activity_index_threshold': 70},
+                'preferences': {
+                    'intense_work': {'weights': {'nutrition': 0.4, 'convenience': 0.3, 'speed': 0.2, 'rating': 0.1}},
+                    'fun': {'weights': {'indulgence': 0.5, 'rating': 0.3, 'value_for_money': 0.2}}
+                },
+                'meals_database': []
+            }
+            with open(self.config_path, 'w') as f:
+                yaml.safe_dump(default_config, f)
+            return default_config
+        
         with open(self.config_path, 'r') as f:
             return yaml.safe_load(f)
 

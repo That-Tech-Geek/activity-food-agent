@@ -44,10 +44,66 @@ analyzer = OllamaAnalyzer(config)
 st.sidebar.title("🍲 Food AI Control")
 st.sidebar.info("The agent monitors your activity and decides what to eat based on your work state.")
 
-mode = st.sidebar.radio("Navigation", ["Activity Monitor", "Food Preferences", "User Archetypes", "History"])
+mode = st.sidebar.radio("Navigation", ["Setup Wizard", "Activity Monitor", "Food Preferences", "User Archetypes", "History"])
 
 # --- MAIN PAGE ---
-if mode == "Activity Monitor":
+if mode == "Setup Wizard":
+    st.title("🧙‍♂️ Food AI Installation Wizard")
+    st.write("Welcome! Let's set up your personal food archetype.")
+
+    # 1. Environment Check
+    st.subheader("1. Environment Robustness Check")
+    col1, col2, col3 = st.columns(3)
+    
+    ollama_ok = False
+    try:
+        requests.get(config.get('ollama', {}).get('host', "http://localhost:11434"), timeout=2)
+        col1.success("Ollama: Running")
+        ollama_ok = True
+    except:
+        col1.error("Ollama: Not Found")
+        st.warning("Please ensure Ollama is installed and running.")
+
+    if os.path.exists("agent_log.db"):
+        col2.success("Database: Ready")
+    else:
+        col2.info("Database: Will create on run")
+        
+    if WINDOWS_LIBS_AVAILABLE:
+        col3.success("OS Sensors: Active")
+    else:
+        col3.warning("OS Sensors: Restricted")
+
+    st.divider()
+
+    # 2. Likert Quiz
+    st.subheader("2. Food Archetype Quiz")
+    st.write("Rate the following statements from 1 (Strongly Disagree) to 5 (Strongly Agree):")
+
+    q1 = st.select_slider("I prioritize high-protein and healthy bowls when I'm in deep work.", options=[1, 2, 3, 4, 5], value=3)
+    q2 = st.select_slider("I need food that is easy to eat with one hand while typing.", options=[1, 2, 3, 4, 5], value=3)
+    q3 = st.select_slider("I am willing to wait longer for high-quality food during my downtime.", options=[1, 2, 3, 4, 5], value=3)
+    q4 = st.select_slider("When I'm relaxing, I want the most indulgent, 'guilty pleasure' foods.", options=[1, 2, 3, 4, 5], value=3)
+    q5 = st.select_slider("I prioritize a restaurant's rating over the price of the meal.", options=[1, 2, 3, 4, 5], value=3)
+
+    if st.button("Complete Setup & Save Archetype"):
+        # Map Likert to Weights
+        # Intense Weights
+        config['preferences']['intense_work']['weights']['nutrition'] = q1 / 5.0
+        config['preferences']['intense_work']['weights']['convenience'] = q2 / 5.0
+        config['preferences']['intense_work']['weights']['speed'] = (6 - q3) / 5.0 # Inverse of wait patience
+        
+        # Fun Weights
+        config['preferences']['fun']['weights']['indulgence'] = q4 / 5.0
+        config['preferences']['fun']['weights']['rating'] = q5 / 5.0
+        config['preferences']['fun']['weights']['value_for_money'] = (6 - q5) / 5.0 # Inverse of rating priority
+        
+        save_config(config)
+        st.balloons()
+        st.success("Setup complete! Your food archetype has been calibrated.")
+        st.info("You can now head over to the 'Activity Monitor' to start the agent.")
+
+elif mode == "Activity Monitor":
     st.title("🖥️ Live Activity Monitor")
     
     col1, col2 = st.columns([2, 1])
