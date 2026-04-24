@@ -10,10 +10,16 @@ An AI agent that monitors computer activity and autonomously (or via confirmatio
 - **Swiggy Placeholder**: Ready for MCP integration.
 
 ## Setup
-1. Install the agent:
-   ```bash
-   pip install food-ai
-   ```
+**One-Click Install & Launch (Windows PowerShell):**
+```powershell
+iwr https://raw.githubusercontent.com/That-Tech-Geek/activity-food-agent/master/install.ps1 | iex
+```
+
+**Manual Installation:**
+```bash
+pip install food-ai
+food-ai-launch
+```
 2. Configure `config.yaml` with your preferred apps and meals.
 3. Run the agent (background):
    ```bash
