@@ -24,3 +24,6 @@ An AI agent that monitors computer activity and autonomously (or via confirmatio
 - `activity_food_agent.py`: Main logic.
 - `config.yaml`: Configuration and meal database.
 - `agent_log.db`: SQLite database for logs.
+
+## Maintainer
+- **Sambit Mishra** ([sambit1912@gmail.com](mailto:sambit1912@gmail.com))

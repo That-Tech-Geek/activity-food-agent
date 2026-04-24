@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "food-ai"
-version = "0.1.0"
+version = "0.1.1"
 authors = [
-  { name="Sagan Labs", email="hello@sagan-docs.vercel.app" },
+  { name="Sambit Mishra", email="sambit1912@gmail.com" },
 ]
 description = "An AI agent that monitors computer activity and autonomously decides what food to order."
 readme = "README.md"
